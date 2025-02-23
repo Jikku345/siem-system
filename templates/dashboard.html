@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SIEM Dashboard</title>
+</head>
+<body>
+    <h1>SIEM Security Alerts</h1>
+    <ul>
+        {% for alert in alerts %}
+            <li><strong>{{ alert['alert'] }}</strong> - Severity: {{ alert['severity'] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
