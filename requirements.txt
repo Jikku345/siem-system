@@ -2,3 +2,4 @@ flask
 watchdog
 pandas
 elasticsearch
+requests
