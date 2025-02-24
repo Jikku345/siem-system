@@ -1,94 +1,72 @@
-Security Information and Event Management (SIEM) System
+# Security Information and Event Management (SIEM) System
 
-Overview
+## Project Overview
+This project is a simple Security Information and Event Management (SIEM) system that monitors logs, processes security events, and displays alerts on a web dashboard.
 
-This SIEM System is a security monitoring tool that collects, analyzes, and displays security alerts from logs. The system includes a Flask-based web dashboard to visualize security events in real-time.
+## Features
+- **Log Monitoring:** Tracks security logs in real-time.
+- **Event Processing:** Analyzes logs for potential security threats.
+- **Web Dashboard:** Displays alerts and system status using Flask.
+- **Alert Notifications:** Sends alerts when suspicious activity is detected.
 
-Features
-
-Log Monitoring: Watches log files for suspicious activities.
-
-Real-Time Alerts: Sends alerts to the web dashboard when a security event occurs.
-
-Flask Dashboard: Displays alerts with severity levels.
-
-API for Alert Injection: Supports external scripts to send alerts via HTTP requests.
-
-Project Structure
-
+## Folder Structure
+```
 siem-system/
-│── logs/                # Directory for storing log files
-│── scripts/             # Additional scripts for log processing
-│── templates/           # HTML templates for Flask dashboard
-│── main.py              # Entry point for the SIEM system
-│── log_monitor.py       # Log monitoring script
-│── event_processor.py   # Processes and categorizes security events
-│── dashboard.py         # Web interface for viewing alerts
-│── send_alert.py        # Script to send test alerts
-│── requirements.txt     # List of required Python packages
-│── README.md            # Project documentation
+│── logs/               # Directory for storing log files
+│── scripts/            # Additional scripts for data processing
+│── templates/          # HTML templates for Flask dashboard
+│── main.py             # Entry point of the SIEM system
+│── log_monitor.py      # Script to monitor and parse logs
+│── event_processor.py  # Processes logs to detect threats
+│── dashboard.py        # Web interface to display alerts
+│── send_alert.py       # Script to send alerts to the dashboard
+│── requirements.txt    # List of dependencies
+```
 
-Installation & Setup
+## Installation
+1. **Clone the Repository:**
+   ```sh
+   git clone https://github.com/Jikku345/siem-system.git
+   cd siem-system
+   ```
 
-1️⃣ Clone the Repository
+2. **Create a Virtual Environment (Optional but Recommended):**
+   ```sh
+   python -m venv venv
+   source venv/bin/activate   # On Mac/Linux
+   venv\Scripts\activate      # On Windows
+   ```
 
-git clone https://github.com/yourusername/siem-system.git
-cd siem-system
+3. **Install Dependencies:**
+   ```sh
+   pip install -r requirements.txt
+   ```
 
-2️⃣ Create a Virtual Environment (Recommended)
+## Running the SIEM System
+1. **Start the Log Monitor:**
+   ```sh
+   python log_monitor.py
+   ```
 
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
+2. **Start the SIEM Dashboard:**
+   ```sh
+   python dashboard.py
+   ```
+   Open your browser and go to: **http://127.0.0.1:5000**
 
-3️⃣ Install Dependencies
+3. **Send a Test Alert:**
+   ```sh
+   python send_alert.py
+   ```
 
-pip install -r requirements.txt
+## Troubleshooting
+- **Template Not Found Error?**
+  - Ensure the `templates/` folder exists and contains `dashboard.html`.
+- **ModuleNotFoundError: No module named 'requests'?**
+  - Run `pip install requests` to install the missing package.
+- **Git Push Issues?**
+  - Run `git pull origin main --rebase` before pushing.
 
-4️⃣ Start the SIEM Dashboard
-
-python dashboard.py
-
-✅ Open http://127.0.0.1:5000 to view alerts.
-
-5️⃣ Send a Test Alert
-
-python send_alert.py
-
-✅ The alert should now appear on the dashboard.
-
-API Endpoints
-
-GET / - Displays the web dashboard.
-
-POST /send_alert - Sends an alert (JSON format required):
-
-{
-  "alert": "Unauthorized login detected!",
-  "severity": "High"
-}
-
-Troubleshooting
-
-ModuleNotFoundError: No module named 'requests'
-
-pip install requests
-
-Flask App Not Running?
-Check if another process is using port 5000:
-
-netstat -ano | findstr :5000   # Windows
-lsof -i :5000                  # macOS/Linux
-
-If in use, run Flask on another port:
-
-python dashboard.py --port 5001
-
-Contributing
-
-Feel free to submit issues or pull requests to enhance this SIEM system!
-
-License
-
-This project is licensed under the MIT License.
+## License
+This project is open-source and available for use under the MIT License.
 
